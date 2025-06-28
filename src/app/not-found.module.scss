@@ -1,0 +1,301 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-primary);
+  padding: 2rem;
+  position: relative;
+}
+
+.themeToggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.content {
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.errorCode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  font-size: 8rem;
+  font-weight: bold;
+  color: var(--text-primary);
+  gap: 0.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 6rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 4rem;
+  }
+}
+
+.number {
+  animation: bounce 2s infinite;
+  color: var(--error-color);
+}
+
+.zero {
+  width: 120px;
+  height: 120px;
+  border: 8px solid var(--error-color);
+  border-radius: 50%;
+  position: relative;
+  animation: rotate 3s linear infinite;
+
+  @media (max-width: 768px) {
+    width: 90px;
+    height: 90px;
+    border-width: 6px;
+  }
+
+  @media (max-width: 480px) {
+    width: 60px;
+    height: 60px;
+    border-width: 4px;
+  }
+}
+
+.face {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 60%;
+}
+
+.eyes {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20%;
+}
+
+.eye {
+  width: 8px;
+  height: 8px;
+  background-color: var(--error-color);
+  border-radius: 50%;
+  animation: blink 3s infinite;
+
+  @media (max-width: 768px) {
+    width: 6px;
+    height: 6px;
+  }
+
+  @media (max-width: 480px) {
+    width: 4px;
+    height: 4px;
+  }
+}
+
+.mouth {
+  width: 20px;
+  height: 10px;
+  border: 2px solid var(--error-color);
+  border-top: none;
+  border-radius: 0 0 20px 20px;
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    width: 16px;
+    height: 8px;
+    border-width: 1.5px;
+  }
+
+  @media (max-width: 480px) {
+    width: 12px;
+    height: 6px;
+    border-width: 1px;
+  }
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  animation: slideInDown 0.8s ease-out 0.2s both;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+  }
+}
+
+.description {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  animation: slideInDown 0.8s ease-out 0.4s both;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+}
+
+.countdown {
+  background-color: var(--background-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  animation: slideInDown 0.8s ease-out 0.6s both;
+
+  p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  animation: slideInDown 0.8s ease-out 0.8s both;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.primaryButton {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--button-primary);
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: var(--button-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.secondaryButton {
+  padding: 0.75rem 1.5rem;
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: var(--background-secondary);
+    border-color: var(--text-primary);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.suggestions {
+  background-color: var(--background-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  text-align: right;
+  animation: slideInDown 0.8s ease-out 1s both;
+
+  h3 {
+    margin: 0 0 1rem 0;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+  }
+
+  ul {
+    margin: 0;
+    padding-right: 1.5rem;
+    list-style-type: disc;
+
+    li {
+      margin: 0.5rem 0;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+  }
+}
+
+// Animations
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes blink {
+  0%, 90%, 100% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 0;
+  }
+} 

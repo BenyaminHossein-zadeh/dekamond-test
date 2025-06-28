@@ -1,0 +1,186 @@
+.container {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-primary);
+  padding: 0 1rem;
+}
+
+.formContainer {
+  width: 100%;
+  max-width: 24rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.inputContainer {
+  position: relative;
+  height: fit-content;
+}
+
+.input {
+  width: 100%;
+  border-radius: 0.375rem;
+  border: 1px solid var(--border-color);
+  background-color: var(--input-background);
+  color: var(--text-primary);
+  padding: 0.75rem 0.75rem 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  transition: border-color 0.15s ease-in-out;
+
+  &:focus {
+    border-color: var(--link-color);
+    outline: none;
+  }
+
+  &:focus + .label {
+    color: var(--link-color);
+  }
+
+  &::placeholder {
+    color: var(--text-secondary);
+  }
+}
+
+.label {
+  position: absolute;
+  left: 0.75rem;
+  top: 0.5rem;
+  font-size: 12px;
+  color: var(--text-secondary);
+  transition: color 0.15s ease-in-out;
+  pointer-events: none;
+}
+
+.passwordContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.passwordStrength {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.strengthBar {
+  flex: 1;
+  height: 4px;
+  background-color: var(--border-color);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.strengthFill {
+  height: 100%;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.strengthText {
+  font-size: 0.75rem;
+  font-weight: 500;
+  min-width: 40px;
+  text-align: center;
+}
+
+.submitButton {
+  width: 100%;
+  border-radius: 0.375rem;
+  background-color: var(--button-primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
+
+  &:hover {
+    background-color: var(--button-primary-hover);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--link-color);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: var(--button-disabled);
+  }
+}
+
+.signupText {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.signupLink {
+  color: var(--link-color);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--link-hover);
+  }
+}
+
+.errorMessage {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--error-color);
+  background-color: rgba(220, 53, 69, 0.1);
+  border: 1px solid rgba(220, 53, 69, 0.2);
+  border-radius: 0.375rem;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.info {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  background-color: rgba(0, 123, 255, 0.1);
+  border: 1px solid rgba(0, 123, 255, 0.2);
+  border-radius: 0.375rem;
+  padding: 1rem;
+
+  h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.875rem;
+    color: var(--text-primary);
+  }
+
+  ul {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+    text-align: right;
+    list-style-type: disc;
+
+    li {
+      margin: 0.25rem 0;
+    }
+  }
+
+  p {
+    margin: 0.5rem 0 0 0;
+    font-size: 0.75rem;
+  }
+} 
