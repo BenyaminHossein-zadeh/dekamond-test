@@ -2,10 +2,11 @@
 
 import { useFormStatus } from "react-dom";
 import { useActionState } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Input from "@/components/Input";
 import { authenticateUser } from "./actions";
 import { getPasswordStrength } from "@/core/validation";
+import { useToast } from "@/components/Toast";
 import styles from "./auth.module.scss";
 
 function SubmitButton() {
@@ -25,12 +26,55 @@ function SubmitButton() {
 export default function AuthForm() {
   const [passwordStrength, setPasswordStrength] = useState<'weak' | 'medium' | 'strong' | 'very strong'>('weak');
   const [showPassword, setShowPassword] = useState(false);
+  const { showToast } = useToast();
 
   const [state, formAction] = useActionState(authenticateUser, null);
+
+  useEffect(() => {
+    if (state?.success === false && state?.errors) {
+      // Show error toast for general errors
+      if (state.errors.general) {
+        showToast({
+          type: 'error',
+          title: 'خطا در ورود',
+          message: state.errors.general,
+          duration: 6000
+        });
+      }
+      
+      // Show warning toast for validation errors
+      if (state.errors.phone || state.errors.password) {
+        showToast({
+          type: 'warning',
+          title: 'لطفاً اطلاعات را بررسی کنید',
+          message: 'اطلاعات وارد شده صحیح نیست',
+          duration: 5000
+        });
+      }
+    }
+  }, [state, showToast]);
 
   const handlePasswordChange = (password: string) => {
     const strength = getPasswordStrength(password);
     setPasswordStrength(strength);
+    
+    if (password.length > 0) {
+      const strengthText = {
+        'weak': 'ضعیف',
+        'medium': 'متوسط', 
+        'strong': 'قوی',
+        'very strong': 'خیلی قوی'
+      }[strength];
+      
+      if (strength === 'very strong') {
+        showToast({
+          type: 'success',
+          title: 'رمز عبور عالی!',
+          message: `رمز عبور شما ${strengthText} است`,
+          duration: 3000
+        });
+      }
+    }
   };
 
   const togglePasswordVisibility = () => {

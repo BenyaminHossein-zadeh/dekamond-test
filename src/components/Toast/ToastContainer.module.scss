@@ -1,0 +1,38 @@
+.container {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  pointer-events: none;
+
+  > * {
+    pointer-events: auto;
+  }
+}
+
+[dir="rtl"] .container {
+  right: auto;
+  left: 1rem;
+}
+
+@media (max-width: 480px) {
+  .container {
+    top: 0.5rem;
+    right: 0.5rem;
+    left: 0.5rem;
+    align-items: stretch;
+
+    > * {
+      width: 100%;
+      max-width: none;
+    }
+  }
+
+  [dir="rtl"] .container {
+    right: 0.5rem;
+    left: 0.5rem;
+  }
+} 

@@ -13,7 +13,6 @@ export default function NotFound() {
     const timer = setInterval(() => {
       setCountdown((prev) => {
         if (prev <= 1) {
-          // Use window.location for more reliable redirect
           window.location.href = "/";
           return 0;
         }
@@ -25,7 +24,6 @@ export default function NotFound() {
   }, []);
 
   const handleGoHome = () => {
-    // Use window.location for more reliable redirect
     window.location.href = "/";
   };
 

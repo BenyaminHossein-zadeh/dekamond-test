@@ -10,7 +10,6 @@ export default function Home() {
   useEffect(() => {
     // Show loading for 2 seconds
     const timeout = setTimeout(() => {
-      // Check if user is authenticated by looking for userToken cookie
       const checkAuth = () => {
         const cookies = document.cookie.split(';');
         const userTokenCookie = cookies.find(cookie => 
@@ -18,10 +17,10 @@ export default function Home() {
         );
         
         if (userTokenCookie) {
-          // User is authenticated, redirect to dashboard
+          // if user is Auth, go to dashboard
           router.push('/dashboard');
         } else {
-          // User is not authenticated, redirect to auth
+          // if user is not Auth, go to auth
           router.push('/auth');
         }
       };
@@ -32,7 +31,6 @@ export default function Home() {
     return () => clearTimeout(timeout);
   }, [router]);
 
-  // Show loading while checking authentication
   return (
     <div className={styles.container}>
       <div className={styles.content}>

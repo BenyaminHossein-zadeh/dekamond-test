@@ -42,7 +42,7 @@ export const getPasswordStrength = (password: string): 'weak' | 'medium' | 'stro
   if (/[A-Z]/.test(password)) score += 1
   if (/[a-z]/.test(password)) score += 1
   if (/\d/.test(password)) score += 1
-  if (/[!@#$%^&*(),.?":{}|<>]/.test(password)) score += 2 // Special characters get extra points
+  if (/[!@#$%^&*(),.?":{}|<>]/.test(password)) score += 2
 
   if (score < 3) return 'weak'
   if (score < 5) return 'medium'

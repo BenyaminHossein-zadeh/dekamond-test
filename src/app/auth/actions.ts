@@ -35,7 +35,6 @@ export async function authenticateUser(
     const phone = formData.get("phone") as string;
     const password = formData.get("password") as string;
     
-    // Additional comprehensive password validation
     const passwordValidation = validatePassword(password);
     if (!passwordValidation.isValid) {
       return {
@@ -46,17 +45,14 @@ export async function authenticateUser(
       };
     }
     
-    // Fetch user data from API
     const apiData = await fetchUserData();
     
-    // Prepare user data
     const userData: UserData = {
       phone,
       password,
       apiData
     };
     
-    // Set cookie for authentication
     const cookieStore = await cookies();
     cookieStore.set('userToken', 'authenticated', {
       path: '/',
@@ -64,7 +60,6 @@ export async function authenticateUser(
       sameSite: 'lax'
     });
     
-    // Store user data in a separate cookie (you might want to use a more secure method)
     cookieStore.set('userData', JSON.stringify(userData), {
       path: '/',
       maxAge: 86400,

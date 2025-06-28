@@ -16,19 +16,17 @@ export const validateAuthForm = (formData: FormData): FormValidationResult => {
   const password = formData.get("password") as string
   const errors: FormValidationResult['errors'] = {}
 
-  // Phone validation
   if (!phone) {
     errors.phone = "شماره موبایل الزامی است"
   } else if (!validateIranianPhone(phone)) {
     errors.phone = "شماره موبایل باید با 09 شروع شود و 11 رقم باشد"
   }
 
-  // Password validation
   const passwordValidation = validatePassword(password)
   if (!password) {
     errors.password = "رمز عبور الزامی است"
   } else if (!passwordValidation.isValid) {
-    errors.password = passwordValidation.errors[0] // Show first error
+    errors.password = passwordValidation.errors[0]
   }
 
   return {
@@ -40,19 +38,17 @@ export const validateAuthForm = (formData: FormData): FormValidationResult => {
 export const validateAuthFormData = (data: AuthFormData): FormValidationResult => {
   const errors: FormValidationResult['errors'] = {}
 
-  // Phone validation
   if (!data.phone) {
     errors.phone = "شماره موبایل الزامی است"
   } else if (!validateIranianPhone(data.phone)) {
     errors.phone = "شماره موبایل باید با 09 شروع شود و 11 رقم باشد"
   }
 
-  // Password validation
   const passwordValidation = validatePassword(data.password)
   if (!data.password) {
     errors.password = "رمز عبور الزامی است"
   } else if (!passwordValidation.isValid) {
-    errors.password = passwordValidation.errors[0] // Show first error
+    errors.password = passwordValidation.errors[0]
   }
 
   return {

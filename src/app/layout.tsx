@@ -3,6 +3,7 @@ import { Vazirmatn } from 'next/font/google'
 import { cookies } from 'next/headers';
 import '../styles/globals.scss'
 import { ThemeProvider } from '@/core/context/ThemeContext'
+import { ToastProvider } from '@/components/Toast'
 
 const vazir = Vazirmatn({ 
   subsets: ['arabic'],
@@ -20,7 +21,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Get theme from cookies server-side
+  
   const cookieStore = await cookies();
   const themeCookie = cookieStore.get('theme');
   const initialTheme = (themeCookie?.value as 'light' | 'dark') || 'light';
@@ -29,7 +30,9 @@ export default async function RootLayout({
     <html lang="fa" dir="rtl" data-theme={initialTheme}>
       <body className={`${vazir.className} ${vazir.variable}`}>
         <ThemeProvider initialTheme={initialTheme}>
-          {children}
+          <ToastProvider>
+            {children}
+          </ToastProvider>
         </ThemeProvider>
       </body>
     </html>

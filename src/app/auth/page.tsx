@@ -5,7 +5,7 @@ import ThemeToggle from '@/components/ThemeToggle';
 import styles from './auth.module.scss';
 
 export default async function Auth() {
-  // Check if user is already authenticated
+  // Check authentication
   const cookieStore = await cookies();
   const userToken = cookieStore.get('userToken');
   

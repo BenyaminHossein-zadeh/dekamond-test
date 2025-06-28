@@ -30,7 +30,6 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children, initialT
   const router = useRouter();
 
   useEffect(() => {
-    // Set initial theme from props
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
 
@@ -39,10 +38,8 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children, initialT
     setTheme(newTheme);
     document.documentElement.setAttribute('data-theme', newTheme);
     
-    // Update cookie for server-side access
     document.cookie = `theme=${newTheme}; path=/; max-age=31536000; SameSite=Lax`;
     
-    // Refresh the page to update server-side rendering
     router.refresh();
   };
 

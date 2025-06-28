@@ -1,6 +1,8 @@
 "use client"
 
+import { useEffect } from 'react';
 import { logoutUser } from '../auth/actions';
+import { useToast } from '@/components/Toast';
 import type { UserData } from '@/types/user';
 import styles from './dashboard.module.scss';
 
@@ -9,6 +11,28 @@ interface DashboardContentProps {
 }
 
 export default function DashboardContent({ userData }: DashboardContentProps) {
+  const { showToast } = useToast();
+
+  useEffect(() => {
+    // welcome toast
+    if (userData?.apiData) {
+      const userName = `${userData.apiData.name.first} ${userData.apiData.name.last}`;
+      showToast({
+        type: 'success',
+        title: 'خوش آمدید!',
+        message: `سلام ${userName}، به داشبورد خوش آمدید`,
+        duration: 4000
+      });
+    } else {
+      showToast({
+        type: 'info',
+        title: 'خوش آمدید!',
+        message: 'به داشبورد خوش آمدید',
+        duration: 3000
+      });
+    }
+  }, [userData, showToast]);
+
   return (
     <>
       {userData?.apiData && (
