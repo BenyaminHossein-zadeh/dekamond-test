@@ -8,7 +8,7 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    // Add 2-second timeout before checking authentication
+    // Show loading for 2 seconds
     const timeout = setTimeout(() => {
       // Check if user is authenticated by looking for userToken cookie
       const checkAuth = () => {

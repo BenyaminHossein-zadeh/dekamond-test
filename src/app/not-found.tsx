@@ -13,7 +13,8 @@ export default function NotFound() {
     const timer = setInterval(() => {
       setCountdown((prev) => {
         if (prev <= 1) {
-          router.push("/");
+          // Use window.location for more reliable redirect
+          window.location.href = "/";
           return 0;
         }
         return prev - 1;
@@ -21,10 +22,11 @@ export default function NotFound() {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [router]);
+  }, []);
 
   const handleGoHome = () => {
-    router.push("/");
+    // Use window.location for more reliable redirect
+    window.location.href = "/";
   };
 
   const handleGoBack = () => {

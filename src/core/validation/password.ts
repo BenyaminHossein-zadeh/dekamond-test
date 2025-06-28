@@ -32,18 +32,20 @@ export const validatePassword = (password: string): PasswordValidationResult => 
   }
 }
 
-export const getPasswordStrength = (password: string): 'weak' | 'medium' | 'strong' => {
+export const getPasswordStrength = (password: string): 'weak' | 'medium' | 'strong' | 'very strong' => {
   let score = 0
 
   if (password.length >= 8) score += 1
   if (password.length >= 12) score += 1
+  if (password.length >= 16) score += 1
 
   if (/[A-Z]/.test(password)) score += 1
   if (/[a-z]/.test(password)) score += 1
   if (/\d/.test(password)) score += 1
-  if (/[!@#$%^&*(),.?":{}|<>]/.test(password)) score += 1
+  if (/[!@#$%^&*(),.?":{}|<>]/.test(password)) score += 2 // Special characters get extra points
 
   if (score < 3) return 'weak'
   if (score < 5) return 'medium'
-  return 'strong'
+  if (score < 7) return 'strong'
+  return 'very strong'
 } 
